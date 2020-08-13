@@ -1,0 +1,23 @@
+package org.demo.webflux.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Mono;
+
+@SpringBootApplication
+public class WebfluxDemoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(WebfluxDemoApplication.class, args);
+
+        HelloWebClient helloWebClient = new HelloWebClient();
+        System.out.println(helloWebClient.getResult());
+    }
+
+}
