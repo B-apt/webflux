@@ -53,7 +53,7 @@ public class ShipwreckController {
 
     // Tweets are Sent to the client as Server Sent Events
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Shipwreck> streamAllTweets() {
+    public Flux<Shipwreck> streamAllShipwrecks() {
         return shipwreckReactiveRepository.findAll();
     }
 
