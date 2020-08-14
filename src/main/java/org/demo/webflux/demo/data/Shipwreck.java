@@ -1,8 +1,11 @@
 package org.demo.webflux.demo.data;
 
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
+@NoArgsConstructor
 @Document(collection = "shipwrecks")
 public class Shipwreck {
 
@@ -22,119 +25,6 @@ public class Shipwreck {
     private String watlev;
     private double[] coordinates;
 
-    public Shipwreck() {}
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getRecrd() {
-        return recrd;
-    }
-
-    public void setRecrd(String recrd) {
-        this.recrd = recrd;
-    }
-
-    public String getVesslterms() {
-        return vesslterms;
-    }
-
-    public void setVesslterms(String vesslterms) {
-        this.vesslterms = vesslterms;
-    }
-
-    public String getFeature_type() {
-        return feature_type;
-    }
-
-    public void setFeature_type(String feature_type) {
-        this.feature_type = feature_type;
-    }
-
-    public String getChart() {
-        return chart;
-    }
-
-    public void setChart(String chart) {
-        this.chart = chart;
-    }
-
-    public double getLatdec() {
-        return latdec;
-    }
-
-    public void setLatdec(double latdec) {
-        this.latdec = latdec;
-    }
-
-    public double getLondec() {
-        return londec;
-    }
-
-    public void setLondec(double londec) {
-        this.londec = londec;
-    }
-
-    public String getGp_quality() {
-        return gp_quality;
-    }
-
-    public void setGp_quality(String gp_quality) {
-        this.gp_quality = gp_quality;
-    }
-
-//    public double getDepth() {
-//        return depth;
-//    }
-//
-//    public void setDepth(double depth) {
-//        this.depth = depth;
-//    }
-
-    public String getSounding_type() {
-        return sounding_type;
-    }
-
-    public void setSounding_type(String sounding_type) {
-        this.sounding_type = sounding_type;
-    }
-
-    public String getHistory() {
-        return history;
-    }
-
-    public void setHistory(String history) {
-        this.history = history;
-    }
-
-    public String getQuasou() {
-        return quasou;
-    }
-
-    public void setQuasou(String quasou) {
-        this.quasou = quasou;
-    }
-
-    public String getWatlev() {
-        return watlev;
-    }
-
-    public void setWatlev(String watlev) {
-        this.watlev = watlev;
-    }
-
-    public double[] getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(double[] coordinates) {
-        this.coordinates = coordinates;
-    }
 
     @Override
     public String toString() {
