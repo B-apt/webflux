@@ -3,7 +3,7 @@ package org.demo.webflux.demo.data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "shipwrecks")
+@Document(collection = "shipwrecks")
 public class Shipwreck {
 
     @Id
@@ -12,15 +12,15 @@ public class Shipwreck {
     private String vesslterms;
     private String feature_type;
     private String chart;
-    private double latdec;
-    private double londec;
-    private String gp_quality;
-    private float depth;
-    private String sounding_type;
-    private String history;
-    private String quasou;
-    private String watlev;
-    private double[] coordinates;
+//    private Double latdec;
+//    private Double londec;
+//    private String gp_quality;
+//    private Float depth;
+//    private String sounding_type;
+//    private String history;
+//    private String quasou;
+//    private String watlev;
+//    private double[] coordinates;
 
     public Shipwreck() {}
 
@@ -63,78 +63,78 @@ public class Shipwreck {
     public void setChart(String chart) {
         this.chart = chart;
     }
-
-    public double getLatdec() {
-        return latdec;
-    }
-
-    public void setLatdec(double latdec) {
-        this.latdec = latdec;
-    }
-
-    public double getLondec() {
-        return londec;
-    }
-
-    public void setLondec(double londec) {
-        this.londec = londec;
-    }
-
-    public String getGp_quality() {
-        return gp_quality;
-    }
-
-    public void setGp_quality(String gp_quality) {
-        this.gp_quality = gp_quality;
-    }
-
-    public float getDepth() {
-        return depth;
-    }
-
-    public void setDepth(float depth) {
-        this.depth = depth;
-    }
-
-    public String getSounding_type() {
-        return sounding_type;
-    }
-
-    public void setSounding_type(String sounding_type) {
-        this.sounding_type = sounding_type;
-    }
-
-    public String getHistory() {
-        return history;
-    }
-
-    public void setHistory(String history) {
-        this.history = history;
-    }
-
-    public String getQuasou() {
-        return quasou;
-    }
-
-    public void setQuasou(String quasou) {
-        this.quasou = quasou;
-    }
-
-    public String getWatlev() {
-        return watlev;
-    }
-
-    public void setWatlev(String watlev) {
-        this.watlev = watlev;
-    }
-
-    public double[] getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(double[] coordinates) {
-        this.coordinates = coordinates;
-    }
+//
+//    public double getLatdec() {
+//        return latdec;
+//    }
+//
+//    public void setLatdec(double latdec) {
+//        this.latdec = latdec;
+//    }
+//
+//    public double getLondec() {
+//        return londec;
+//    }
+//
+//    public void setLondec(double londec) {
+//        this.londec = londec;
+//    }
+//
+//    public String getGp_quality() {
+//        return gp_quality;
+//    }
+//
+//    public void setGp_quality(String gp_quality) {
+//        this.gp_quality = gp_quality;
+//    }
+//
+//    public float getDepth() {
+//        return depth;
+//    }
+//
+//    public void setDepth(float depth) {
+//        this.depth = depth;
+//    }
+//
+//    public String getSounding_type() {
+//        return sounding_type;
+//    }
+//
+//    public void setSounding_type(String sounding_type) {
+//        this.sounding_type = sounding_type;
+//    }
+//
+//    public String getHistory() {
+//        return history;
+//    }
+//
+//    public void setHistory(String history) {
+//        this.history = history;
+//    }
+//
+//    public String getQuasou() {
+//        return quasou;
+//    }
+//
+//    public void setQuasou(String quasou) {
+//        this.quasou = quasou;
+//    }
+//
+//    public String getWatlev() {
+//        return watlev;
+//    }
+//
+//    public void setWatlev(String watlev) {
+//        this.watlev = watlev;
+//    }
+//
+//    public double[] getCoordinates() {
+//        return coordinates;
+//    }
+//
+//    public void setCoordinates(double[] coordinates) {
+//        this.coordinates = coordinates;
+//    }
 
     @Override
     public String toString() {
@@ -144,22 +144,22 @@ public class Shipwreck {
         sb.append(", vesslterms='").append(vesslterms).append('\'');
         sb.append(", feature_type='").append(feature_type).append('\'');
         sb.append(", chart='").append(chart).append('\'');
-        sb.append(", latdec=").append(latdec);
-        sb.append(", londec=").append(londec);
-        sb.append(", gp_quality='").append(gp_quality).append('\'');
-        sb.append(", depth=").append(depth);
-        sb.append(", sounding_type='").append(sounding_type).append('\'');
-        sb.append(", history='").append(history).append('\'');
-        sb.append(", quasou='").append(quasou).append('\'');
-        sb.append(", watlev='").append(watlev).append('\'');
-        sb.append(", coordinates=");
-        if (coordinates == null) sb.append("null");
-        else {
-            sb.append('[');
-            for (int i = 0; i < coordinates.length; ++i)
-                sb.append(i == 0 ? "" : ", ").append(coordinates[i]);
-            sb.append(']');
-        }
+//        sb.append(", latdec=").append(latdec);
+//        sb.append(", londec=").append(londec);
+//        sb.append(", gp_quality='").append(gp_quality).append('\'');
+//        sb.append(", depth=").append(depth);
+//        sb.append(", sounding_type='").append(sounding_type).append('\'');
+//        sb.append(", history='").append(history).append('\'');
+//        sb.append(", quasou='").append(quasou).append('\'');
+//        sb.append(", watlev='").append(watlev).append('\'');
+//        sb.append(", coordinates=");
+//        if (coordinates == null) sb.append("null");
+//        else {
+//            sb.append('[');
+//            for (int i = 0; i < coordinates.length; ++i)
+//                sb.append(i == 0 ? "" : ", ").append(coordinates[i]);
+//            sb.append(']');
+//        }
         sb.append('}');
         return sb.toString();
     }
