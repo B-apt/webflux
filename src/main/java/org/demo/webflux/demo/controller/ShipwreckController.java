@@ -19,15 +19,9 @@ public class ShipwreckController {
     @Autowired
     private ShipwreckReactiveRepository shipwreckReactiveRepository;
 
-//    @Autowired
-//    public ShipwreckController(ShipwreckReactiveRepository reactiveRepository) {
-//        this.shipwreckReactiveRepository = reactiveRepository;
-//    }
-
     @GetMapping()
     public @ResponseBody
     Mono<Shipwreck> getOneShipwreck() {
-        // Shipwreck res = shipwreckReactiveRepository.findById("578f6fa2df35c7fbdbaed8c4").block(Duration.ofSeconds(3));
         System.out.println("getOneShipwreck() called");
         return shipwreckReactiveRepository.findById("578f6fa2df35c7fbdbaed8c4");
     }
@@ -36,7 +30,6 @@ public class ShipwreckController {
     public @ResponseBody Mono<Long> getShipwreckCount() {
         Mono<Long> count = shipwreckReactiveRepository
                 .count();
-//                .onErrorMap(throwable -> throwable.printStackTrace());
         return count;
     }
 
@@ -48,7 +41,6 @@ public class ShipwreckController {
     @GetMapping("/all")
     public @ResponseBody
     Flux<Shipwreck> getAllShipwrecks() {
-        //Flux<Shipwreck> res = shipwreckReactiveRepository.count()
         return shipwreckReactiveRepository.findAll().take(1000).onErrorReturn(new Shipwreck());
     }
 
