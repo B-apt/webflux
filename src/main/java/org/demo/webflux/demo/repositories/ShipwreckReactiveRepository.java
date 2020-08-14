@@ -8,7 +8,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Repository
-public interface ShipwreckReactiveRepository extends ReactiveMongoRepository<Shipwreck, String> {
+public interface ShipwreckReactiveRepository extends ReactiveMongoRepository<Shipwreck, String>, CustomShipwreckRepository {
 
     Mono<Shipwreck> findById(String id);
 

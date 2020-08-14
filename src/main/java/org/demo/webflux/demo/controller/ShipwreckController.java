@@ -66,5 +66,9 @@ public class ShipwreckController {
         return shipwreckReactiveRepository.findClosest(x_coordinates, y_coordinates);
     }
 
+    @GetMapping(value = "/stream/dry", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    public Flux<Shipwreck> findDry() {
+        return shipwreckReactiveRepository.findByWaterlevel(1.2d).take(100);
+    }
 
 }
