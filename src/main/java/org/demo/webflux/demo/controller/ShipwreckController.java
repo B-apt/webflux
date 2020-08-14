@@ -2,12 +2,11 @@ package org.demo.webflux.demo.controller;
 
 import org.demo.webflux.demo.data.Shipwreck;
 import org.demo.webflux.demo.repositories.ShipwreckReactiveRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -15,6 +14,8 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/wrecks")
 public class ShipwreckController {
+
+    Logger logger = LoggerFactory.getLogger(ShipwreckController.class);
 
     @Autowired
     private ShipwreckReactiveRepository shipwreckReactiveRepository;
@@ -48,6 +49,12 @@ public class ShipwreckController {
     @GetMapping(value = "/stream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     public Flux<Shipwreck> streamAllShipwrecks() {
         return shipwreckReactiveRepository.findAll();
+    }
+
+    @GetMapping(value = "/closest", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    public Flux<Shipwreck> findClosest(@RequestParam double x_coordinates, @RequestParam double y_coordinates) {
+        logger.debug("findClosest() called with coordinates (x:{}, y:{})", x_coordinates, y_coordinates);
+        return shipwreckReactiveRepository.findClosest(x_coordinates, y_coordinates);
     }
 
 
