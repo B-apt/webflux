@@ -4,14 +4,15 @@ import org.demo.webflux.demo.data.Shipwreck;
 import org.demo.webflux.demo.repositories.ShipwreckReactiveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Controller
+
+@RestController
 @RequestMapping("/wrecks")
 public class ShipwreckController {
 
@@ -52,7 +53,7 @@ public class ShipwreckController {
     }
 
     // Tweets are Sent to the client as Server Sent Events
-    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/stream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     public Flux<Shipwreck> streamAllShipwrecks() {
         return shipwreckReactiveRepository.findAll();
     }
