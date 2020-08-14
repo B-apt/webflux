@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
+
 
 @RestController
 @RequestMapping("/wrecks")
 public class ShipwreckController {
 
-    Logger logger = LoggerFactory.getLogger(ShipwreckController.class);
+    private final Logger LOG = LoggerFactory.getLogger(ShipwreckController.class);
 
     @Autowired
     private ShipwreckReactiveRepository shipwreckReactiveRepository;
@@ -23,7 +26,6 @@ public class ShipwreckController {
     @GetMapping()
     public @ResponseBody
     Mono<Shipwreck> getOneShipwreck() {
-        System.out.println("getOneShipwreck() called");
         return shipwreckReactiveRepository.findById("578f6fa2df35c7fbdbaed8c4");
     }
 
@@ -47,13 +49,20 @@ public class ShipwreckController {
 
     // Tweets are Sent to the client as Server Sent Events
     @GetMapping(value = "/stream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
-    public Flux<Shipwreck> streamAllShipwrecks() {
-        return shipwreckReactiveRepository.findAll();
+    public Flux<List<Shipwreck>> streamAllShipwrecks() {
+        AtomicLong count = new AtomicLong();
+        return shipwreckReactiveRepository
+                .findAll()
+                .buffer(100)
+                .doOnEach(
+                    listSignal ->
+                            LOG.debug("streamAllShipwrecks() - Number of packet of shipwrecks retrieved={}",
+                                    count.incrementAndGet()));
     }
 
     @GetMapping(value = "/closest", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     public Flux<Shipwreck> findClosest(@RequestParam double x_coordinates, @RequestParam double y_coordinates) {
-        logger.debug("findClosest() called with coordinates (x:{}, y:{})", x_coordinates, y_coordinates);
+        LOG.debug("findClosest() called with coordinates (x:{}, y:{})", x_coordinates, y_coordinates);
         return shipwreckReactiveRepository.findClosest(x_coordinates, y_coordinates);
     }
 
